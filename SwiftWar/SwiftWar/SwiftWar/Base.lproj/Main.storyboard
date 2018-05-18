@@ -104,11 +104,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seu Turno!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTM-Xx-Ccc">
-                                <rect key="frame" x="119" y="422" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seu Turno!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTM-Xx-Ccc">
+                                <rect key="frame" x="16" y="422" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9df-xz-qlm"/>
-                                    <constraint firstAttribute="width" constant="83" id="g3L-Cp-eG7"/>
+                                    <constraint firstAttribute="width" constant="288" id="g3L-Cp-eG7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,6 +124,9 @@
                                 <state key="normal" title="Posicionar Tropas">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="posicionarTropas:" destination="kfN-xC-Odj" eventType="touchUpInside" id="3O4-1s-3St"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaK-VU-wjN">
                                 <rect key="frame" x="16" y="489" width="146" height="30"/>
@@ -135,6 +138,9 @@
                                 <state key="normal" title="Mover Tropas">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="moverTropas:" destination="kfN-xC-Odj" eventType="touchUpInside" id="YHs-kY-RpA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p88-lg-ij7">
                                 <rect key="frame" x="16" y="526" width="146" height="30"/>
@@ -423,7 +429,7 @@
                             <constraint firstItem="pzI-AZ-2SH" firstAttribute="top" secondItem="rTM-Xx-Ccc" secondAttribute="bottom" constant="8" id="JPW-LH-Mx3"/>
                             <constraint firstItem="uOf-rn-aZ1" firstAttribute="top" secondItem="snI-Mc-7lF" secondAttribute="top" constant="40" id="K5q-Nr-QfH"/>
                             <constraint firstItem="lnq-Ig-YPy" firstAttribute="leading" secondItem="pzI-AZ-2SH" secondAttribute="trailing" constant="9" id="KZW-CL-xRE"/>
-                            <constraint firstItem="snI-Mc-7lF" firstAttribute="trailing" secondItem="rTM-Xx-Ccc" secondAttribute="trailing" constant="118" id="KfQ-3n-GOR"/>
+                            <constraint firstItem="snI-Mc-7lF" firstAttribute="trailing" secondItem="rTM-Xx-Ccc" secondAttribute="trailing" constant="16" id="KfQ-3n-GOR"/>
                             <constraint firstItem="tP6-e0-txc" firstAttribute="top" secondItem="lnq-Ig-YPy" secondAttribute="bottom" constant="-1" id="LbG-pC-7UL"/>
                             <constraint firstItem="lnq-Ig-YPy" firstAttribute="top" secondItem="rTM-Xx-Ccc" secondAttribute="bottom" constant="8" id="M29-qh-qhv"/>
                             <constraint firstItem="snI-Mc-7lF" firstAttribute="bottom" secondItem="p88-lg-ij7" secondAttribute="bottom" constant="12" id="M3D-6M-Po9"/>
@@ -447,7 +453,7 @@
                             <constraint firstItem="snI-Mc-7lF" firstAttribute="bottom" secondItem="w2n-pC-b4j" secondAttribute="bottom" constant="12" id="qwf-6H-2fw"/>
                             <constraint firstItem="3Hb-dQ-VPg" firstAttribute="trailing" secondItem="w2n-pC-b4j" secondAttribute="trailing" id="rmq-hG-ce1"/>
                             <constraint firstItem="snI-Mc-7lF" firstAttribute="trailing" secondItem="uOf-rn-aZ1" secondAttribute="trailing" constant="16" id="ue3-f1-L7a"/>
-                            <constraint firstItem="rTM-Xx-Ccc" firstAttribute="leading" secondItem="snI-Mc-7lF" secondAttribute="leading" constant="119" id="xCl-01-WfG"/>
+                            <constraint firstItem="rTM-Xx-Ccc" firstAttribute="leading" secondItem="snI-Mc-7lF" secondAttribute="leading" constant="16" id="xCl-01-WfG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="snI-Mc-7lF"/>
                     </view>
@@ -484,11 +490,12 @@
                         <outlet property="sergipe" destination="1zw-d4-5Kd" id="ut2-sL-mYB"/>
                         <outlet property="tocantins" destination="hol-5k-oW5" id="xvk-co-c1h"/>
                         <outlet property="tropasDisponiveis" destination="3Hb-dQ-VPg" id="9Ia-S3-1Fh"/>
+                        <outlet property="turnLabel" destination="rTM-Xx-Ccc" id="jB6-kC-7qh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnh-s5-IXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933.39843749999989" y="115.95900439238652"/>
+            <point key="canvasLocation" x="931.875" y="115.14084507042254"/>
         </scene>
     </scenes>
     <resources>
