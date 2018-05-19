@@ -12,6 +12,7 @@ class MainScreen: UIViewController {
     
     //mapsize: 500 x 500
     //scrollview size (iphoneSE): 288 324
+    //
     
     @IBOutlet weak var scrollView: UIScrollView!
     
