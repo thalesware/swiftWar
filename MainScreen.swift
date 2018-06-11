@@ -871,7 +871,19 @@ func encontraFront(estado: UILabel)->[String]{
         if (matoGrosso.textColor == UIColor.green && goias.textColor == UIColor.green && matoGrossoDoSul.textColor == UIColor.green){
             totalBonus = totalBonus + bonusCentroOeste
         }
-        //todo: fazer os outros bonus
+        
+        if (parana.textColor == UIColor.green && rioGrandeDoSul.textColor == UIColor.green && santaCatarina.textColor == UIColor.green){
+            totalBonus = totalBonus + bonusSul
+        }
+        
+        if(saoPaulo.textColor == UIColor.green && rioDeJaneiro.textColor == UIColor.green && minasGerais.textColor == UIColor.green && espiritoSanto.textColor == UIColor.green){
+            totalBonus = totalBonus + bonusSudeste
+        }
+        
+        if(rioGrandeDoNorte.textColor == UIColor.green && pernambuco.textColor == UIColor.green && paraiba.textColor == UIColor.green && alagoas.textColor == UIColor.green && ceara.textColor == UIColor.green && bahia.textColor == UIColor.green && maranhao.textColor == UIColor.green && piaui.textColor == UIColor.green && sergipe.textColor == UIColor.green){
+            
+            totalBonus = totalBonus + bonusNordeste
+        }
         
         bonusContinente.text = String(describing: totalBonus)
     }
