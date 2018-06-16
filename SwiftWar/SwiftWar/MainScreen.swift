@@ -1,11 +1,3 @@
-//
-//  MainScreen.swift
-//  SwiftWar
-//
-//  Created by i9access on 16/05/18.
-//  Copyright © 2018 i9access. All rights reserved.
-//
-
 import UIKit
 
 class MainScreen: UIViewController {
@@ -30,6 +22,9 @@ class MainScreen: UIViewController {
     var playerEstados: [UILabel] = []
     var computerEstados: [UILabel] = []
     var ganhouBatalha: Bool = false
+    
+    var residuoAtk: Int = 0
+    var residuoDef: Int = 0
     
     var estadoSelecionado: UILabel? = nil
     
@@ -396,6 +391,196 @@ func encontraFront(estado: UILabel)->[String]{
         return []
     }
     
+    func batalhar(estadoAtacante: UILabel , estadoDefensor: UILabel)->Bool{
+        
+        self.residuoAtk = 0
+        self.residuoDef = 0
+        
+        //dados
+        let dado_atk_1 = Int(arc4random_uniform(5)) //sempre existirá
+        let dado_atk_2 = Int(arc4random_uniform(5))
+        let dado_atk_3 = Int(arc4random_uniform(5))
+        let dado_def_1 = Int(arc4random_uniform(5)) //sempre existirá
+        let dado_def_2 = Int(arc4random_uniform(5))
+        let dado_def_3 = Int(arc4random_uniform(5))
+        
+        var totalDadosAtk = Int(estadoAtacante.text!)!-1
+        if totalDadosAtk > 3{
+            totalDadosAtk = 3
+        }
+        var totalDadosDef = Int(estadoDefensor.text!)!-1
+        if totalDadosDef > 3{
+            totalDadosDef = 3
+        }
+        //batalha 1x1
+        if totalDadosAtk == 1 && totalDadosDef == 1{
+            if dado_atk_1 > dado_def_1{
+                //ganhou batalha 1x1
+                residuoDef = 1
+                return true
+            }
+            else{
+                //perdeu batalha 1x1
+                residuoAtk = 1
+                return false
+            }
+        }
+        //batalha 2x1
+        if totalDadosAtk == 2 && totalDadosDef == 1{
+            let maiorDado = max(dado_atk_1, dado_atk_2)
+            if maiorDado > dado_def_1{
+                //ganhou batalha 2x1
+                residuoDef = 1
+                return true
+            }else{
+                residuoAtk = 1
+                return false
+            }
+        }
+        //batalha 3x1
+        if totalDadosAtk == 3 && totalDadosDef == 1{
+            let maiorDado = max(max(dado_atk_1, dado_atk_2),dado_atk_3)
+            if maiorDado > dado_def_1{
+                //ganhou batalha 3x1
+                residuoDef = 1
+                return true
+            }else{
+                residuoAtk = 1
+                //perdeu batalha 3x1
+                return false
+            }
+        }
+        //batalha 1x2
+        if totalDadosAtk == 1 && totalDadosDef == 2{
+            let maiorDado = max(dado_def_1,dado_def_2)
+            if dado_atk_1 > maiorDado{
+                //ganhou batalha 1x2
+                residuoDef = 1
+                return true
+            }else{
+                residuoAtk = 1
+                //perdeu batalha 1x2
+                return false
+            }
+        }
+        //batalha 1x3
+        if totalDadosAtk == 1 && totalDadosDef == 3{
+            let maiorDado = max(max(dado_def_1,dado_def_2),dado_def_3)
+            if dado_atk_1 > maiorDado{
+                //ganhou batalha 1x3
+                residuoDef = 1
+                return true
+            }
+            else{
+                residuoAtk = 1
+                //perdeu batalha 1x3
+                return false
+            }
+        }
+        //batalha 2x2
+        if totalDadosAtk == 2 && totalDadosDef == 2{
+            let maiorDadoAtk = max(dado_atk_1, dado_atk_2)
+            let menorDadoAtk = min(dado_atk_1, dado_atk_2)
+            let maiorDadoDef = max(dado_def_1, dado_def_2)
+            let menorDadoDef = min(dado_def_1, dado_def_2)
+            
+            if maiorDadoAtk > maiorDadoDef{
+                if menorDadoAtk > menorDadoDef{
+                    //venceu 2x2
+                    residuoDef = 2
+                    return true
+                }
+                else{
+                    //venceu 2x2 porem perdeu 1 tropa no ataque, defesa 2
+                    residuoAtk = 1
+                    residuoDef = 1
+                    return true
+                }
+            }else{
+                //maiordadodef > maiordadoatk
+                if menorDadoAtk > menorDadoDef{
+                    //venceu 2x2 porem perdeu 1 tropa no ataque, defesa 1
+                    residuoAtk = 1
+                    residuoDef = 1
+                }else{
+                    //perdeu tudo
+                    residuoAtk = 2
+                }
+            }
+        }
+        
+        if totalDadosAtk == 3 && totalDadosDef == 3{
+            let maiorDadoAtk = max(dado_atk_1,dado_atk_2,dado_atk_3)
+            let menorDadoAtk = min(dado_atk_1,dado_atk_2,dado_atk_3)
+            let meioDadoAtk = 0
+            let vetorDadosAtk = [dado_atk_1,dado_atk_2,dado_atk_3]
+            for dado in vetorDadosAtk {
+                if(dado >= menorDadoAtk && dado <= maiorDadoAtk){
+                    meioDadoAtk = dado
+                }
+            }
+            let maiorDadoDef = max(dado_def_1,dado_def_2,dado_def_3)
+            let menorDadoDef = min(dado_def_1,dado_def_2,dado_def_3)
+            let meioDadoDef = 0
+            let vetorDadosDef = [dado_def_1,dado_def_2,dado_def_3]
+            for dado in vetorDadosDef {
+                if(dado >= menorDadoDef && dado <= maiorDadoDef){
+                    meioDadoDef = dado
+                }
+            }
+            
+            if maiorDadoAtk > maiorDadoDef{
+                if meioDadoAtk > meioDadoDef{
+                    if menorDadoAtk > menorDadoDef{
+                        //3x0 pro ataque
+                        residuoDef = 3
+                    }else{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }
+                    
+                }else{//do meio do ataque perdeu
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }else{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }
+                }
+            }
+            else{
+                //maior do ataque perdeu
+                if meioDadoAtk > meioDadoDef{
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }else{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }
+                }else{
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }else{
+                        //3x0 pra defesa
+                        residuoAtk = 3
+                    }
+                }
+                
+            }
+            
+        }
+        return true
+    }
+    
     func conquistouTerritorioInimigo(territorioConquistado: UILabel){
         territorioConquistado.textColor = UIColor.green
         territorioConquistado.text = "1"
@@ -422,20 +607,30 @@ func encontraFront(estado: UILabel)->[String]{
                             alerta.addAction(UIAlertAction(title: estadoVizinho,style: .default, handler: {
                                 (action) in
                                 
-                                //TODO: criar funcao de rolar dados
-                                self.ganhouBatalha = true
+                                self.ganhouBatalha = self.batalhar(estadoAtacante: estadoSelecionadoFrontLabel[index], estadoDefensor: self.estadoSelecionado!)
                                 
                                 if self.ganhouBatalha == true{
+                                   
+                                    if (self.estadoSelecionado?.text == "1" || (self.estadoSelecionado?.text == "2" && self.residuoDef == 2)||(self.estadoSelecionado?.text == "3" && self.residuoDef == 3)){
                                     self.conquistouTerritorioInimigo(territorioConquistado: self.estadoSelecionado!)
                                 
-                                    estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - 1)
+                                        estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoDef)
                                 
                                     
                                     self.updatePlacar()
                                     self.updateBonusContinente()
                                     
+                                        if self.playerTerritorios.text == "26" {
+                                            self.turnLabel.text = "você conquistou o BRASIL!"
+                                        }
+                                    
+                                    }//aqui ganhou a batalha porem n conquistou territorio
+                                    estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
+                                    self.estadoSelecionado?.text = String(describing: Int((self.estadoSelecionado?.text)!)!-self.residuoDef)
+                                    
                                 }else{ //TODO tratar quando perde a batalha
-                                    print("perdeu batalha")
+                                    estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
+                                    self.estadoSelecionado?.text = String(describing: Int((self.estadoSelecionado?.text)!)!-self.residuoDef)
                                 }
                             }))
                         }
@@ -746,7 +941,19 @@ func encontraFront(estado: UILabel)->[String]{
         if (matoGrosso.textColor == UIColor.green && goias.textColor == UIColor.green && matoGrossoDoSul.textColor == UIColor.green){
             totalBonus = totalBonus + bonusCentroOeste
         }
-        //todo: fazer os outros bonus
+        
+        if (parana.textColor == UIColor.green && rioGrandeDoSul.textColor == UIColor.green && santaCatarina.textColor == UIColor.green){
+            totalBonus = totalBonus + bonusSul
+        }
+        
+        if(saoPaulo.textColor == UIColor.green && rioDeJaneiro.textColor == UIColor.green && minasGerais.textColor == UIColor.green && espiritoSanto.textColor == UIColor.green){
+            totalBonus = totalBonus + bonusSudeste
+        }
+        
+        if(rioGrandeDoNorte.textColor == UIColor.green && pernambuco.textColor == UIColor.green && paraiba.textColor == UIColor.green && alagoas.textColor == UIColor.green && ceara.textColor == UIColor.green && bahia.textColor == UIColor.green && maranhao.textColor == UIColor.green && piaui.textColor == UIColor.green && sergipe.textColor == UIColor.green){
+            
+            totalBonus = totalBonus + bonusNordeste
+        }
         
         bonusContinente.text = String(describing: totalBonus)
     }

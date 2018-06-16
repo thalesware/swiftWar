@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  SwiftWar
-//
-//  Created by i9access on 15/05/18.
-//  Copyright © 2018 i9access. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
