@@ -508,6 +508,76 @@ func encontraFront(estado: UILabel)->[String]{
                 }
             }
         }
+        
+        if totalDadosAtk == 3 && totalDadosDef == 3{
+            let maiorDadoAtk = max(dado_atk_1,dado_atk_2,dado_atk_3)
+            let menorDadoAtk = min(dado_atk_1,dado_atk_2,dado_atk_3)
+            let meioDadoAtk = 0
+            let vetorDadosAtk = [dado_atk_1,dado_atk_2,dado_atk_3]
+            for dado in vetorDadosAtk {
+                if(dado >= menorDadoAtk && dado <= maiorDadoAtk){
+                    meioDadoAtk = dado
+                }
+            }
+            let maiorDadoDef = max(dado_def_1,dado_def_2,dado_def_3)
+            let menorDadoDef = min(dado_def_1,dado_def_2,dado_def_3)
+            let meioDadoDef = 0
+            let vetorDadosDef = [dado_def_1,dado_def_2,dado_def_3]
+            for dado in vetorDadosDef {
+                if(dado >= menorDadoDef && dado <= maiorDadoDef){
+                    meioDadoDef = dado
+                }
+            }
+            
+            if maiorDadoAtk > maiorDadoDef{
+                if meioDadoAtk > meioDadoDef{
+                    if menorDadoAtk > menorDadoDef{
+                        //3x0 pro ataque
+                        residuoDef = 3
+                    }else{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }
+                    
+                }else{//do meio do ataque perdeu
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }else{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }
+                }
+            }
+            else{
+                //maior do ataque perdeu
+                if meioDadoAtk > meioDadoDef{
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pro ataque
+                        residuoDef = 2
+                        residuoAtk = 1
+                    }else{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }
+                }else{
+                    if menorDadoAtk > menorDadoDef{
+                        //2x1 pra defesa
+                        residuoDef = 1
+                        residuoAtk = 2
+                    }else{
+                        //3x0 pra defesa
+                        residuoAtk = 3
+                    }
+                }
+                
+            }
+            
+        }
         return true
     }
     
