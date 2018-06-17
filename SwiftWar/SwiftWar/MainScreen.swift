@@ -16,17 +16,17 @@ class MainScreen: UIViewController {
     
     @IBOutlet weak var mapa: UIImageView!
    
-    var brasil: [UILabel] = []
+    var brasil: [Estado] = []
     
     var playerTurn: Bool = true
-    var playerEstados: [UILabel] = []
-    var computerEstados: [UILabel] = []
+    var playerEstados: [Estado] = []
+    var computerEstados: [Estado] = []
     var ganhouBatalha: Bool = false
     
     var residuoAtk: Int = 0
     var residuoDef: Int = 0
     
-    var estadoSelecionado: UILabel? = nil
+    var estadoSelecionado: Estado? = nil
     
     //Região Norte:
     @IBOutlet weak var acre: UILabel!
@@ -86,6 +86,10 @@ class MainScreen: UIViewController {
     
     @IBOutlet weak var sergipe: UILabel!
     
+    
+    
+    
+
     lazy var acreFront = ["amazonas","rondonia"]
     lazy var amazonasFront = ["acre","roraima","rondonia","para","matoGrosso"]
     lazy var roraimaFront = ["amazonas","para"]
@@ -117,6 +121,37 @@ class MainScreen: UIViewController {
     lazy var alagoasFront = ["sergipe","bahia","pernambuco"]
     lazy var sergipeFront = ["alagoas","bahia"]
     
+    var acreEstado: Estado? = nil
+    var amazonasEstado: Estado? = nil
+    var roraimaEstado: Estado? = nil
+    var rondoniaEstado: Estado? = nil
+    var paraEstado: Estado? = nil
+    var amapaEstado: Estado? = nil
+    var tocantinsEstado: Estado? = nil
+    
+    var matoGrossoEstado: Estado? = nil
+    var goiasEstado: Estado? = nil
+    var matoGrossoDoSulEstado: Estado? = nil
+    
+    var saoPauloEstado: Estado? = nil
+    var minasGeraisEstado: Estado? = nil
+    var rioDeJaneiroEstado: Estado? = nil
+    var espiritoSantoEstado: Estado? = nil
+    
+    var paranaEstado: Estado? = nil
+    var santaCatarinaEstado: Estado? = nil
+    var rioGrandeDoSulEstado: Estado? = nil
+    
+    var bahiaEstado: Estado? = nil
+    var maranhaoEstado: Estado? = nil
+    var piauiEstado: Estado? = nil
+    var cearaEstado: Estado? = nil
+    var rioGrandeDoNorteEstado: Estado? = nil
+    var paraibaEstado: Estado? = nil
+    var pernambucoEstado: Estado? = nil
+    var alagoasEstado: Estado? = nil
+    var sergipeEstado: Estado? = nil
+    
     override func viewDidLoad() {
         var contentRect = CGRect.zero
         for view in scrollView.subviews {
@@ -124,7 +159,34 @@ class MainScreen: UIViewController {
         }
         scrollView.contentSize = contentRect.size
 
-        self.brasil = [acre,amazonas,roraima,rondonia,para,amapa,tocantins,goias,matoGrosso,matoGrossoDoSul,saoPaulo,minasGerais,rioDeJaneiro,espiritoSanto,parana,santaCatarina,rioGrandeDoSul,bahia,maranhao,ceara,piaui,rioGrandeDoNorte,paraiba,pernambuco,alagoas,sergipe]
+        self.acreEstado = Estado(nome: "acre", fronteiras: acreFront, label: acre)
+        self.amazonasEstado = Estado(nome: "amazonas", fronteiras: amazonasFront, label: amazonas)
+        self.roraimaEstado = Estado(nome: "roraima", fronteiras: roraimaFront, label: roraima)
+        self.rondoniaEstado = Estado(nome: "rondonia", fronteiras: rondoniaFront , label: rondonia)
+        self.paraEstado = Estado(nome: "para", fronteiras: paraFront, label: para)
+        self.amapaEstado = Estado(nome: "amapa", fronteiras: amapaFront, label: amapa)
+        self.tocantinsEstado = Estado(nome: "tocantins", fronteiras: tocantinsFront, label: tocantins)
+        self.matoGrossoEstado = Estado(nome: "mato grosso", fronteiras: matoGrossoFront, label: matoGrosso)
+        self.goiasEstado = Estado(nome: "goias", fronteiras: goiasFront, label: goias)
+        self.matoGrossoDoSulEstado = Estado(nome: "mato grosso do sul", fronteiras: matoGrossoDoSulFront, label: matoGrossoDoSul)
+        self.saoPauloEstado = Estado(nome: "sao paulo", fronteiras: saoPauloFront, label: saoPaulo)
+        self.minasGeraisEstado = Estado(nome: "minas gerais", fronteiras: minasGeraisFront, label: minasGerais)
+        self.rioDeJaneiroEstado = Estado(nome: "rio de janeiro", fronteiras: rioDeJaneiroFront, label: rioDeJaneiro)
+        self.espiritoSantoEstado = Estado(nome: "espirito santo", fronteiras: espiritoSantoFront, label: espiritoSanto)
+        self.paranaEstado = Estado(nome: "parana", fronteiras: paranaFront, label: parana)
+        self.santaCatarinaEstado = Estado(nome: "santa catarina", fronteiras: santaCatarinaFront, label: santaCatarina)
+        self.rioGrandeDoSulEstado = Estado(nome: "rio grande do sul", fronteiras: rioGrandeDoSulFront, label: rioGrandeDoSul)
+        self.bahiaEstado = Estado(nome: "bahia", fronteiras: bahiaFront, label: bahia)
+        self.maranhaoEstado = Estado(nome: "maranhao", fronteiras: maranhaoFront, label: maranhao)
+        self.piauiEstado = Estado(nome: "piaui", fronteiras: piauiFront, label: piaui)
+        self.cearaEstado = Estado(nome: "ceara", fronteiras: cearaFront, label: ceara)
+        self.rioGrandeDoNorteEstado = Estado(nome: "rio grande do norte", fronteiras: rioGrandeDoNorteFront, label: rioGrandeDoNorte)
+        self.paraibaEstado = Estado(nome: "paraiba", fronteiras: paraibaFront, label: paraiba)
+        self.pernambucoEstado = Estado(nome: "pernambuco", fronteiras: pernambucoFront, label: pernambuco)
+        self.alagoasEstado = Estado(nome: "alagoas", fronteiras: alagoasFront, label: alagoas)
+        self.sergipeEstado = Estado(nome: "sergipe", fronteiras: sergipeFront, label: sergipe)
+        
+        self.brasil = [acreEstado,amazonasEstado,roraimaEstado,rondoniaEstado,paraEstado,amapaEstado,tocantinsEstado,goiasEstado,matoGrossoEstado,matoGrossoDoSulEstado,saoPauloEstado,minasGeraisEstado,rioDeJaneiroEstado,espiritoSantoEstado,paranaEstado,santaCatarinaEstado,rioGrandeDoSulEstado,bahiaEstado,maranhaoEstado,cearaEstado,piauiEstado,rioGrandeDoNorteEstado,paraibaEstado,pernambucoEstado,alagoasEstado,sergipeEstado] as! [Estado]
     
         
         let tapGestureMapa = UITapGestureRecognizer(target: self, action: #selector(self.mapaSelecionado(gesture:)))
@@ -132,87 +194,87 @@ class MainScreen: UIViewController {
         mapa.isUserInteractionEnabled = true
         // NORTE
         let tapGestureAcre = UITapGestureRecognizer(target: self, action: #selector(acreSelecionado(gesture:))) //acre
-        acre.addGestureRecognizer(tapGestureAcre)
-        acre.isUserInteractionEnabled = true
+        acreEstado?.estadoLabel.addGestureRecognizer(tapGestureAcre)
+        acreEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureAmazonas = UITapGestureRecognizer(target: self, action: #selector(amazonasSelecionada(gesture:))) //amazonas
-        amazonas.addGestureRecognizer(tapGestureAmazonas)
-        amazonas.isUserInteractionEnabled = true
+        amazonasEstado?.estadoLabel.addGestureRecognizer(tapGestureAmazonas)
+        amazonasEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureRoraima = UITapGestureRecognizer(target: self, action: #selector(roraimaSelecionado(gesture:))) //roraima
-        roraima.addGestureRecognizer(tapGestureRoraima)
-        roraima.isUserInteractionEnabled = true
+        roraimaEstado?.estadoLabel.addGestureRecognizer(tapGestureRoraima)
+        roraimaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureRondonia = UITapGestureRecognizer(target: self, action: #selector(rondoniaSelecionado(gesture:))) //rondonia
-        rondonia.addGestureRecognizer(tapGestureRondonia)
-        rondonia.isUserInteractionEnabled = true
+        rondoniaEstado?.estadoLabel.addGestureRecognizer(tapGestureRondonia)
+        rondoniaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGesturePara = UITapGestureRecognizer(target: self, action: #selector(paraSelecionado(gesture:))) //para
-        para.addGestureRecognizer(tapGesturePara)
-        para.isUserInteractionEnabled = true
+        paraEstado?.estadoLabel.addGestureRecognizer(tapGesturePara)
+        paraEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureAmapa = UITapGestureRecognizer(target: self, action: #selector(amapaSelecionado(gesture:))) //amapa
-        amapa.addGestureRecognizer(tapGestureAmapa)
-        amapa.isUserInteractionEnabled = true
+        amapaEstado?.estadoLabel.addGestureRecognizer(tapGestureAmapa)
+        amapaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureTocantins = UITapGestureRecognizer(target: self, action: #selector(tocantinsSelecionado(gesture:))) //tocantins
-        tocantins.addGestureRecognizer(tapGestureTocantins)
-        tocantins.isUserInteractionEnabled = true
+        tocantinsEstado?.estadoLabel.addGestureRecognizer(tapGestureTocantins)
+        tocantinsEstado?.estadoLabel.isUserInteractionEnabled = true
         // CENTRO-OESTE
         let tapGestureMatoGrosso = UITapGestureRecognizer(target: self, action: #selector(matoGrossoSelecionado(gesture:))) //matoGrosso
-        matoGrosso.addGestureRecognizer(tapGestureMatoGrosso)
-        matoGrosso.isUserInteractionEnabled = true
+        matoGrossoEstado?.estadoLabel.addGestureRecognizer(tapGestureMatoGrosso)
+        matoGrossoEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureGoias = UITapGestureRecognizer(target: self, action: #selector(goiasSelecionado(gesture:))) //goias
-        goias.addGestureRecognizer(tapGestureGoias)
-        goias.isUserInteractionEnabled = true
+        goiasEstado?.estadoLabel.addGestureRecognizer(tapGestureGoias)
+        goiasEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureMatoGrossoDoSul = UITapGestureRecognizer(target: self, action: #selector(matoGrossoDoSulSelecionado(gesture:))) //matoGrossoDoSul
-        matoGrossoDoSul.addGestureRecognizer(tapGestureMatoGrossoDoSul)
-        matoGrossoDoSul.isUserInteractionEnabled = true
+        matoGrossoDoSulEstado?.estadoLabel.addGestureRecognizer(tapGestureMatoGrossoDoSul)
+        matoGrossoDoSulEstado?.estadoLabel.isUserInteractionEnabled = true
         // SUDESTE
         let tapGestureSaoPaulo = UITapGestureRecognizer(target: self, action: #selector(saoPauloSelecionado(gesture:))) //saoPaulo
-        saoPaulo.addGestureRecognizer(tapGestureSaoPaulo)
-        saoPaulo.isUserInteractionEnabled = true
+        saoPauloEstado?.estadoLabel.addGestureRecognizer(tapGestureSaoPaulo)
+        saoPauloEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureMinasGerais = UITapGestureRecognizer(target: self, action: #selector(minasGeraisSelecionado(gesture:))) //minasGerais
-        minasGerais.addGestureRecognizer(tapGestureMinasGerais)
-        minasGerais.isUserInteractionEnabled = true
+        minasGeraisEstado?.estadoLabel.addGestureRecognizer(tapGestureMinasGerais)
+        minasGeraisEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureRioDeJaneiro = UITapGestureRecognizer(target: self, action: #selector(rioDeJaneiroSelecionado(gesture:))) //rioDeJaneiro
-        rioDeJaneiro.addGestureRecognizer(tapGestureRioDeJaneiro)
-        rioDeJaneiro.isUserInteractionEnabled = true
+        rioDeJaneiroEstado?.estadoLabel.addGestureRecognizer(tapGestureRioDeJaneiro)
+        rioDeJaneiroEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureEspiritoSanto = UITapGestureRecognizer(target: self, action: #selector(espiritoSantoSelecionado(gesture:))) //espiritoSanto
-        espiritoSanto.addGestureRecognizer(tapGestureEspiritoSanto)
-        espiritoSanto.isUserInteractionEnabled = true
+        espiritoSantoEstado?.estadoLabel.addGestureRecognizer(tapGestureEspiritoSanto)
+        espiritoSantoEstado?.estadoLabel.isUserInteractionEnabled = true
         // SUL
         let tapGestureParana = UITapGestureRecognizer(target: self, action: #selector(paranaSelecionado(gesture:))) //parana
-        parana.addGestureRecognizer(tapGestureParana)
-        parana.isUserInteractionEnabled = true
+        paranaEstado?.estadoLabel.addGestureRecognizer(tapGestureParana)
+        paranaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureSantaCatarina = UITapGestureRecognizer(target: self, action: #selector(santaCatarinaSelecionado(gesture:))) //santaCatarina
-        santaCatarina.addGestureRecognizer(tapGestureSantaCatarina)
-        santaCatarina.isUserInteractionEnabled = true
+        santaCatarinaEstado?.estadoLabel.addGestureRecognizer(tapGestureSantaCatarina)
+        santaCatarinaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureRioGrandeDoSul = UITapGestureRecognizer(target: self, action: #selector(rioGrandeDoSulSelecionado(gesture:))) //rioGrandeDoSul
-        rioGrandeDoSul.addGestureRecognizer(tapGestureRioGrandeDoSul)
-        rioGrandeDoSul.isUserInteractionEnabled = true
+        rioGrandeDoSulEstado?.estadoLabel.addGestureRecognizer(tapGestureRioGrandeDoSul)
+        rioGrandeDoSulEstado?.estadoLabel.isUserInteractionEnabled = true
         // NORDESTE
         let tapGestureBahia = UITapGestureRecognizer(target: self, action: #selector(bahiaSelecionado(gesture:))) //bahia
-        bahia.addGestureRecognizer(tapGestureBahia)
-        bahia.isUserInteractionEnabled = true
+        bahiaEstado?.estadoLabel.addGestureRecognizer(tapGestureBahia)
+        bahiaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureMaranhao = UITapGestureRecognizer(target: self, action: #selector(maranhaoSelecionado(gesture:))) //maranhao
-        maranhao.addGestureRecognizer(tapGestureMaranhao)
-        maranhao.isUserInteractionEnabled = true
+        maranhaoEstado?.estadoLabel.addGestureRecognizer(tapGestureMaranhao)
+        maranhaoEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGesturePiaui = UITapGestureRecognizer(target: self, action: #selector(piauiSelecionado(gesture:))) //piaui
-        piaui.addGestureRecognizer(tapGesturePiaui)
-        piaui.isUserInteractionEnabled = true
+        piauiEstado?.estadoLabel.addGestureRecognizer(tapGesturePiaui)
+        piauiEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureCeara = UITapGestureRecognizer(target: self, action: #selector(cearaSelecionado(gesture:))) //ceara
-        ceara.addGestureRecognizer(tapGestureCeara)
-        ceara.isUserInteractionEnabled = true
+        cearaEstado?.estadoLabel.addGestureRecognizer(tapGestureCeara)
+        cearaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureRioGrandeDoNorte = UITapGestureRecognizer(target: self, action: #selector(rioGrandeDoNorteSelecionado(gesture:))) //rioGrandeDoNorte
-        rioGrandeDoNorte.addGestureRecognizer(tapGestureRioGrandeDoNorte)
-        rioGrandeDoNorte.isUserInteractionEnabled = true
+        rioGrandeDoNorteEstado?.estadoLabel.addGestureRecognizer(tapGestureRioGrandeDoNorte)
+        rioGrandeDoNorteEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureParaiba = UITapGestureRecognizer(target: self, action: #selector(paraibaSelecionado(gesture:))) //paraiba
-        paraiba.addGestureRecognizer(tapGestureParaiba)
-        paraiba.isUserInteractionEnabled = true
+        paraibaEstado?.estadoLabel.addGestureRecognizer(tapGestureParaiba)
+        paraibaEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGesturePernambuco = UITapGestureRecognizer(target: self, action: #selector(pernambucoSelecionado(gesture:))) //pernambuco
-        pernambuco.addGestureRecognizer(tapGesturePernambuco)
-        pernambuco.isUserInteractionEnabled = true
+        pernambucoEstado?.estadoLabel.addGestureRecognizer(tapGesturePernambuco)
+        pernambucoEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureAlagoas = UITapGestureRecognizer(target: self, action: #selector(alagoasSelecionado(gesture:))) //alagoas
-        alagoas.addGestureRecognizer(tapGestureAlagoas)
-        alagoas.isUserInteractionEnabled = true
+        alagoasEstado?.estadoLabel.addGestureRecognizer(tapGestureAlagoas)
+        alagoasEstado?.estadoLabel.isUserInteractionEnabled = true
         let tapGestureSergipe = UITapGestureRecognizer(target: self, action: #selector(sergipeSelecionado(gesture:))) //sergipe
-        sergipe.addGestureRecognizer(tapGestureSergipe)
-        sergipe.isUserInteractionEnabled = true
+        sergipeEstado?.estadoLabel.addGestureRecognizer(tapGestureSergipe)
+        sergipeEstado?.estadoLabel.isUserInteractionEnabled = true
         
         povoarMapa()
         self.updatePlacar()
@@ -512,7 +574,7 @@ func encontraFront(estado: UILabel)->[String]{
         if totalDadosAtk == 3 && totalDadosDef == 3{
             let maiorDadoAtk = max(dado_atk_1,dado_atk_2,dado_atk_3)
             let menorDadoAtk = min(dado_atk_1,dado_atk_2,dado_atk_3)
-            let meioDadoAtk = 0
+            var meioDadoAtk = 0
             let vetorDadosAtk = [dado_atk_1,dado_atk_2,dado_atk_3]
             for dado in vetorDadosAtk {
                 if(dado >= menorDadoAtk && dado <= maiorDadoAtk){
@@ -521,7 +583,7 @@ func encontraFront(estado: UILabel)->[String]{
             }
             let maiorDadoDef = max(dado_def_1,dado_def_2,dado_def_3)
             let menorDadoDef = min(dado_def_1,dado_def_2,dado_def_3)
-            let meioDadoDef = 0
+            var meioDadoDef = 0
             let vetorDadosDef = [dado_def_1,dado_def_2,dado_def_3]
             for dado in vetorDadosDef {
                 if(dado >= menorDadoDef && dado <= maiorDadoDef){
@@ -581,24 +643,31 @@ func encontraFront(estado: UILabel)->[String]{
         return true
     }
     
-    func conquistouTerritorioInimigo(territorioConquistado: UILabel){
-        territorioConquistado.textColor = UIColor.green
-        territorioConquistado.text = "1"
+    func conquistouTerritorioInimigo(territorioConquistado: Estado){
+        territorioConquistado.estadoLabel.textColor = UIColor.green
+        territorioConquistado.estadoLabel.text = "1"
         
         playerEstados.append(territorioConquistado)
         
-        if let index = computerEstados.index(of: territorioConquistado) {
-            computerEstados.remove(at: index)
+        var indice = 0
+        for estado in computerEstados{
+            if(territorioConquistado.nome == estado.nome){
+                break
+            }
+            indice = indice + 1
         }
+        
+            computerEstados.remove(at: indice)
+       
     }
     
     @IBAction func atacar(_ sender: Any) {
         if playerTurn == true{
             if estadoSelecionado != nil{
-                if estadoSelecionado?.textColor == UIColor.brown{
+                if estadoSelecionado?.estadoLabel.textColor == UIColor.brown{
                     
-                    let estadoSelecionadoFront = encontraFront(estado: estadoSelecionado!)
-                    let estadoSelecionadoFrontLabel = encontaFrontLabel(estado: estadoSelecionado!)
+                    let estadoSelecionadoFront = encontraFront(estado: estadoSelecionado!.estadoLabel)
+                    let estadoSelecionadoFrontLabel = encontaFrontLabel(estado: estadoSelecionado!.estadoLabel)
                     
                     let alerta = UIAlertController(title: "Atacar!", message: "Selecione de onde virão as tropas para atacar este estado:", preferredStyle: .actionSheet)
                     
@@ -607,11 +676,11 @@ func encontraFront(estado: UILabel)->[String]{
                             alerta.addAction(UIAlertAction(title: estadoVizinho,style: .default, handler: {
                                 (action) in
                                 
-                                self.ganhouBatalha = self.batalhar(estadoAtacante: estadoSelecionadoFrontLabel[index], estadoDefensor: self.estadoSelecionado!)
+                                self.ganhouBatalha = self.batalhar(estadoAtacante: estadoSelecionadoFrontLabel[index], estadoDefensor: self.estadoSelecionado!.estadoLabel)
                                 
                                 if self.ganhouBatalha == true{
                                    
-                                    if (self.estadoSelecionado?.text == "1" || (self.estadoSelecionado?.text == "2" && self.residuoDef == 2)||(self.estadoSelecionado?.text == "3" && self.residuoDef == 3)){
+                                    if (self.estadoSelecionado?.estadoLabel.text == "1" || (self.estadoSelecionado?.estadoLabel.text == "2" && self.residuoDef == 2)||(self.estadoSelecionado?.estadoLabel.text == "3" && self.residuoDef == 3)){
                                     self.conquistouTerritorioInimigo(territorioConquistado: self.estadoSelecionado!)
                                 
                                         estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoDef)
@@ -626,11 +695,11 @@ func encontraFront(estado: UILabel)->[String]{
                                     
                                     }//aqui ganhou a batalha porem n conquistou territorio
                                     estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
-                                    self.estadoSelecionado?.text = String(describing: Int((self.estadoSelecionado?.text)!)!-self.residuoDef)
+                                    self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!-self.residuoDef)
                                     
                                 }else{ //TODO tratar quando perde a batalha
                                     estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
-                                    self.estadoSelecionado?.text = String(describing: Int((self.estadoSelecionado?.text)!)!-self.residuoDef)
+                                    self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!-self.residuoDef)
                                 }
                             }))
                         }
@@ -663,16 +732,16 @@ func encontraFront(estado: UILabel)->[String]{
     @IBAction func moverTropas(_ sender: Any) {
         if playerTurn == true {
             if estadoSelecionado != nil {
-                if estadoSelecionado?.textColor == UIColor.green {
-                    let estadoSelecionadoFront = encontraFront(estado: estadoSelecionado!)
-                    let estadoSelecionadoFrontLabel = encontaFrontLabel(estado: estadoSelecionado!)
+                if estadoSelecionado?.estadoLabel.textColor == UIColor.green {
+                    let estadoSelecionadoFront = encontraFront(estado: estadoSelecionado!.estadoLabel)
+                    let estadoSelecionadoFrontLabel = encontaFrontLabel(estado: estadoSelecionado!.estadoLabel)
                     let alerta = UIAlertController(title: "Mover Tropas", message: "Selecione de onde virão as tropas para este estado:", preferredStyle: .actionSheet)
                     
                     for (index, estadoVizinho) in estadoSelecionadoFront.enumerated() {
                         if(estadoSelecionadoFrontLabel[index].text != "1" && estadoSelecionadoFrontLabel[index].textColor != UIColor.brown) {
                         alerta.addAction(UIAlertAction(title: estadoVizinho,style: .default, handler: {
                             (action) in
-                            self.estadoSelecionado?.text = String(describing: Int((self.estadoSelecionado?.text)!)!+1)
+                            self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!+1)
                             estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - 1)
                         }))
                         }
@@ -699,11 +768,11 @@ func encontraFront(estado: UILabel)->[String]{
     @IBAction func posicionarTropas(_ sender: Any) {
         if playerTurn == true {
             if estadoSelecionado != nil {
-                if estadoSelecionado?.textColor == UIColor.green {
+                if estadoSelecionado?.estadoLabel.textColor == UIColor.green {
                     if tropasDisponiveis.text != "0" {
-                        var numeroAtual = Int((estadoSelecionado?.text)!)!
+                        var numeroAtual = Int((estadoSelecionado?.estadoLabel.text)!)!
                         numeroAtual = numeroAtual + 1
-                        estadoSelecionado?.text = String(describing: numeroAtual)
+                        estadoSelecionado?.estadoLabel.text = String(describing: numeroAtual)
                         tropasDisponiveis.text = String(describing: (Int(tropasDisponiveis.text!)! - 1))
                     } else {
                         let alerta = UIAlertController(title: "Atenção!", message: "Você não possui mais tropas!", preferredStyle: .alert)
@@ -733,49 +802,49 @@ func encontraFront(estado: UILabel)->[String]{
     
      @objc func acreSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = acre
+            estadoSelecionado = acreEstado
             turnLabel.text = "Selecionado: Acre"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func amazonasSelecionada(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = amazonas
+            estadoSelecionado = amazonasEstado
             turnLabel.text = "Selecionado: Amazonas"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func roraimaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = roraima
+            estadoSelecionado = roraimaEstado
             turnLabel.text = "Selecionado: Roraima"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func rondoniaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = rondonia
+            estadoSelecionado = rondoniaEstado
             turnLabel.text = "Selecionado: Rondonia"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func paraSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = para
+            estadoSelecionado = paraEstado
             turnLabel.text = "Selecionado: Para"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func amapaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = amapa
+            estadoSelecionado = amapaEstado
             turnLabel.text = "Selecionado: Amapa"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func tocantinsSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = tocantins
+            estadoSelecionado = tocantinsEstado
             turnLabel.text = "Selecionado: Tocantins"
             turnLabel.textColor = UIColor.black
         }
@@ -783,21 +852,21 @@ func encontraFront(estado: UILabel)->[String]{
     // CENTRO-OESTE
     @objc func matoGrossoSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = matoGrosso
+            estadoSelecionado = matoGrossoEstado
             turnLabel.text = "Selecionado: Mato Grosso"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func goiasSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = goias
+            estadoSelecionado = goiasEstado
             turnLabel.text = "Selecionado: Goias"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func matoGrossoDoSulSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = matoGrossoDoSul
+            estadoSelecionado = matoGrossoDoSulEstado
             turnLabel.text = "Selecionado: Mato Grosso do Sul"
             turnLabel.textColor = UIColor.black
         }
@@ -805,28 +874,28 @@ func encontraFront(estado: UILabel)->[String]{
     // SUDESTE
     @objc func saoPauloSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = saoPaulo
+            estadoSelecionado = saoPauloEstado
             turnLabel.text = "Selecionado: São Paulo"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func minasGeraisSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = minasGerais
+            estadoSelecionado = minasGeraisEstado
             turnLabel.text = "Selecionado: Minas Gerais"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func rioDeJaneiroSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = rioDeJaneiro
+            estadoSelecionado = rioDeJaneiroEstado
             turnLabel.text = "Selecionado: Rio de Janeiro"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func espiritoSantoSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = espiritoSanto
+            estadoSelecionado = espiritoSantoEstado
             turnLabel.text = "Selecionado: Espírito Santo"
             turnLabel.textColor = UIColor.black
         }
@@ -834,21 +903,21 @@ func encontraFront(estado: UILabel)->[String]{
     // SUL
     @objc func paranaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = parana
+            estadoSelecionado = paranaEstado
             turnLabel.text = "Selecionado: Paraná"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func santaCatarinaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = santaCatarina
+            estadoSelecionado = santaCatarinaEstado
             turnLabel.text = "Selecionado: Santa Catarina"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func rioGrandeDoSulSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = rioGrandeDoSul
+            estadoSelecionado = rioGrandeDoSulEstado
             turnLabel.text = "Selecionado: Rio Grande do Sul"
             turnLabel.textColor = UIColor.black
         }
@@ -856,63 +925,63 @@ func encontraFront(estado: UILabel)->[String]{
     // NORDESTE
     @objc func bahiaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = bahia
+            estadoSelecionado = bahiaEstado
             turnLabel.text = "Selecionado: Bahia"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func maranhaoSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = maranhao
+            estadoSelecionado = maranhaoEstado
             turnLabel.text = "Selecionado: Maranhão"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func piauiSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = piaui
+            estadoSelecionado = piauiEstado
             turnLabel.text = "Selecionado: Piauí"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func cearaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = ceara
+            estadoSelecionado = cearaEstado
             turnLabel.text = "Selecionado: Ceará"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func rioGrandeDoNorteSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = rioGrandeDoNorte
+            estadoSelecionado = rioGrandeDoNorteEstado
             turnLabel.text = "Selecionado: Rio Grande do Norte"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func paraibaSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = paraiba
+            estadoSelecionado = paraibaEstado
             turnLabel.text = "Selecionado: Paraíba"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func pernambucoSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = pernambuco
+            estadoSelecionado = pernambucoEstado
             turnLabel.text = "Selecionado: Pernambuco"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func alagoasSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = alagoas
+            estadoSelecionado = alagoasEstado
             turnLabel.text = "Selecionado: Alagoas"
             turnLabel.textColor = UIColor.black
         }
     }
     @objc func sergipeSelecionado(gesture: UIGestureRecognizer) {
         if(gesture.view as? UILabel) != nil {
-            estadoSelecionado = sergipe
+            estadoSelecionado = sergipeEstado
             turnLabel.text = "Selecionado: Sergipe"
             turnLabel.textColor = UIColor.black
         }
@@ -968,13 +1037,13 @@ func encontraFront(estado: UILabel)->[String]{
         computerTerritorios.text = String(describing: computerEstados.count)
     }
     
-    func updateLabelsColors(arrayEstados: [UILabel],player: Bool){
+    func updateLabelsColors(arrayEstados: [Estado],player: Bool){
         for estado in arrayEstados{
         if player == true{
-            estado.textColor = UIColor.green
+            estado.estadoLabel.textColor = UIColor.green
             }
         else{
-            estado.textColor = UIColor.brown
+            estado.estadoLabel.textColor = UIColor.brown
             }
         }
     }
@@ -982,13 +1051,13 @@ func encontraFront(estado: UILabel)->[String]{
     //esta funcao inicializa todos territorios com no minimo 1 tropa
     func povoarMapa(){
         for estado in brasil{
-            estado.text = "2"
+            estado.estadoLabel.text = "2"
             
             let n = Int(arc4random_uniform(2)) //numero random (0 ou 1)
             if n == 0 {
-                estado.textColor = UIColor.brown
+                estado.estadoLabel.textColor = UIColor.brown
                 computerEstados.append(estado)
-            } else{estado.textColor = UIColor.green
+            } else{estado.estadoLabel.textColor = UIColor.green
                 playerEstados.append(estado)
             }
         }
