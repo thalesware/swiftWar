@@ -23,6 +23,8 @@ class MainScreen: UIViewController {
     var computerEstados: [Estado] = []
     var ganhouBatalha: Bool = false
     
+    var maquinaBonus: Int = 0
+    
     var residuoAtk: Int = 0
     var residuoDef: Int = 0
     
@@ -166,21 +168,21 @@ class MainScreen: UIViewController {
         self.paraEstado = Estado(nome: "para", fronteiras: paraFront, label: para)
         self.amapaEstado = Estado(nome: "amapa", fronteiras: amapaFront, label: amapa)
         self.tocantinsEstado = Estado(nome: "tocantins", fronteiras: tocantinsFront, label: tocantins)
-        self.matoGrossoEstado = Estado(nome: "mato grosso", fronteiras: matoGrossoFront, label: matoGrosso)
+        self.matoGrossoEstado = Estado(nome: "matoGrosso", fronteiras: matoGrossoFront, label: matoGrosso)
         self.goiasEstado = Estado(nome: "goias", fronteiras: goiasFront, label: goias)
-        self.matoGrossoDoSulEstado = Estado(nome: "mato grosso do sul", fronteiras: matoGrossoDoSulFront, label: matoGrossoDoSul)
-        self.saoPauloEstado = Estado(nome: "sao paulo", fronteiras: saoPauloFront, label: saoPaulo)
-        self.minasGeraisEstado = Estado(nome: "minas gerais", fronteiras: minasGeraisFront, label: minasGerais)
-        self.rioDeJaneiroEstado = Estado(nome: "rio de janeiro", fronteiras: rioDeJaneiroFront, label: rioDeJaneiro)
-        self.espiritoSantoEstado = Estado(nome: "espirito santo", fronteiras: espiritoSantoFront, label: espiritoSanto)
+        self.matoGrossoDoSulEstado = Estado(nome: "matoGrossoDoSul", fronteiras: matoGrossoDoSulFront, label: matoGrossoDoSul)
+        self.saoPauloEstado = Estado(nome: "saoPaulo", fronteiras: saoPauloFront, label: saoPaulo)
+        self.minasGeraisEstado = Estado(nome: "minasGerais", fronteiras: minasGeraisFront, label: minasGerais)
+        self.rioDeJaneiroEstado = Estado(nome: "rioDeJaneiro", fronteiras: rioDeJaneiroFront, label: rioDeJaneiro)
+        self.espiritoSantoEstado = Estado(nome: "espiritoSanto", fronteiras: espiritoSantoFront, label: espiritoSanto)
         self.paranaEstado = Estado(nome: "parana", fronteiras: paranaFront, label: parana)
-        self.santaCatarinaEstado = Estado(nome: "santa catarina", fronteiras: santaCatarinaFront, label: santaCatarina)
-        self.rioGrandeDoSulEstado = Estado(nome: "rio grande do sul", fronteiras: rioGrandeDoSulFront, label: rioGrandeDoSul)
+        self.santaCatarinaEstado = Estado(nome: "santaCatarina", fronteiras: santaCatarinaFront, label: santaCatarina)
+        self.rioGrandeDoSulEstado = Estado(nome: "rioGrandeDoSul", fronteiras: rioGrandeDoSulFront, label: rioGrandeDoSul)
         self.bahiaEstado = Estado(nome: "bahia", fronteiras: bahiaFront, label: bahia)
         self.maranhaoEstado = Estado(nome: "maranhao", fronteiras: maranhaoFront, label: maranhao)
         self.piauiEstado = Estado(nome: "piaui", fronteiras: piauiFront, label: piaui)
         self.cearaEstado = Estado(nome: "ceara", fronteiras: cearaFront, label: ceara)
-        self.rioGrandeDoNorteEstado = Estado(nome: "rio grande do norte", fronteiras: rioGrandeDoNorteFront, label: rioGrandeDoNorte)
+        self.rioGrandeDoNorteEstado = Estado(nome: "rioGrandeDoNorte", fronteiras: rioGrandeDoNorteFront, label: rioGrandeDoNorte)
         self.paraibaEstado = Estado(nome: "paraiba", fronteiras: paraibaFront, label: paraiba)
         self.pernambucoEstado = Estado(nome: "pernambuco", fronteiras: pernambucoFront, label: pernambuco)
         self.alagoasEstado = Estado(nome: "alagoas", fronteiras: alagoasFront, label: alagoas)
@@ -285,88 +287,67 @@ class MainScreen: UIViewController {
     
 // todo fazer func para transformar as variaveis <estado>Front em array de string
 func encontraFront(estado: UILabel)->[String]{
-    // NORTE
-    if estado == acre {
-        return acreFront
-    }
-    if estado == amazonas {
-        return amazonasFront
-    }
-    if estado == roraima {
-        return roraimaFront
-    }
-    if estado == rondonia {
-        return rondoniaFront
-    }
-    if estado == para {
-        return paraFront
-    }
-    if estado == tocantins {
-        return tocantinsFront
-    }
-    // CENTRO-OESTE
-    if estado ==  matoGrosso {
-        return matoGrossoFront
-    }
-    if estado == goias {
-        return goiasFront
-    }
-    if estado == matoGrossoDoSul {
-        return matoGrossoDoSulFront
-    }
-    // SUDESTE
-    if estado == saoPaulo {
-        return saoPauloFront
-    }
-    if estado == minasGerais {
-        return minasGeraisFront
-    }
-    if estado == rioDeJaneiro {
-        return rioDeJaneiroFront
-    }
-    if estado == espiritoSanto {
-        return espiritoSantoFront
-    }
-    // SUL
-    if estado == parana {
-        return paranaFront
-    }
-    if estado == santaCatarina {
-        return santaCatarinaFront
-    }
-    if estado == rioGrandeDoSul {
-        return rioGrandeDoSulFront
-    }
-    // NORDESTE
-    if estado == bahia {
-        return bahiaFront
-    }
-    if estado == maranhao {
-        return maranhaoFront
-    }
-    if estado == ceara {
-        return cearaFront
-    }
-    if estado == piaui {
-        return piauiFront
-    }
-    if estado == rioGrandeDoNorte {
-        return rioGrandeDoNorteFront
-    }
-    if estado == paraiba {
-        return paraibaFront
-    }
-    if estado == pernambuco {
-        return pernambucoFront
-    }
-    if estado == alagoas {
-        return alagoasFront
-    }
-    if estado == sergipe {
-        return sergipeFront
-    }
     
-    return []
+    switch estado {
+    //NORTE
+    case acre:
+        return acreFront
+    case amazonas:
+        return amazonasFront
+    case roraima:
+        return roraimaFront
+    case rondonia:
+        return rondoniaFront
+    case para:
+        return paraFront
+    case tocantins:
+        return tocantinsFront
+    // CENTRO-OESTE
+    case matoGrosso:
+        return matoGrossoFront
+    case goias:
+        return goiasFront
+    case matoGrossoDoSul:
+        return matoGrossoDoSulFront
+    //SUDESTE
+    case saoPaulo:
+        return saoPauloFront
+    case minasGerais:
+        return minasGeraisFront
+    case rioDeJaneiro:
+        return rioDeJaneiroFront
+    case espiritoSanto:
+        return espiritoSantoFront
+    //SUL
+    case parana:
+        return paranaFront
+    case santaCatarina:
+        return santaCatarinaFront
+    case rioGrandeDoSul:
+        return rioGrandeDoSulFront
+    //NORDESTE
+    case bahia:
+        return bahiaFront
+    case maranhao:
+        return maranhaoFront
+    case pernambuco:
+        return pernambucoFront
+    case paraiba:
+        return paraibaFront
+    case piaui:
+        return piauiFront
+    case ceara:
+        return cearaFront
+    case alagoas:
+        return alagoasFront
+    case sergipe:
+        return sergipeFront
+    case rioGrandeDoNorte:
+        return rioGrandeDoNorteFront
+    default :
+            return []
+        
+        }
     }
     
     func encontaFrontLabel(estado: UILabel)->[UILabel] {
@@ -468,11 +449,11 @@ func encontraFront(estado: UILabel)->[String]{
         
         var totalDadosAtk = Int(estadoAtacante.text!)!-1
         if totalDadosAtk > 3{
-            totalDadosAtk = 3
+            totalDadosAtk = 2
         }
         var totalDadosDef = Int(estadoDefensor.text!)!-1
         if totalDadosDef > 3{
-            totalDadosDef = 3
+            totalDadosDef = 2
         }
         //batalha 1x1
         if totalDadosAtk == 1 && totalDadosDef == 1{
@@ -553,7 +534,7 @@ func encontraFront(estado: UILabel)->[String]{
                     return true
                 }
                 else{
-                    //venceu 2x2 porem perdeu 1 tropa no ataque, defesa 2
+                    //venceu 2x2 porem perdeu 1 tropa no ataque, defesa 1
                     residuoAtk = 1
                     residuoDef = 1
                     return true
@@ -564,9 +545,11 @@ func encontraFront(estado: UILabel)->[String]{
                     //venceu 2x2 porem perdeu 1 tropa no ataque, defesa 1
                     residuoAtk = 1
                     residuoDef = 1
+                    return true
                 }else{
                     //perdeu tudo
                     residuoAtk = 2
+                    return false
                 }
             }
         }
@@ -596,10 +579,12 @@ func encontraFront(estado: UILabel)->[String]{
                     if menorDadoAtk > menorDadoDef{
                         //3x0 pro ataque
                         residuoDef = 3
+                        return true
                     }else{
                         //2x1 pro ataque
                         residuoDef = 2
                         residuoAtk = 1
+                        return true
                     }
                     
                 }else{//do meio do ataque perdeu
@@ -607,10 +592,12 @@ func encontraFront(estado: UILabel)->[String]{
                         //2x1 pro ataque
                         residuoDef = 2
                         residuoAtk = 1
+                        return true
                     }else{
                         //2x1 pra defesa
                         residuoDef = 1
                         residuoAtk = 2
+                        return true
                     }
                 }
             }
@@ -621,19 +608,23 @@ func encontraFront(estado: UILabel)->[String]{
                         //2x1 pro ataque
                         residuoDef = 2
                         residuoAtk = 1
+                        return true
                     }else{
                         //2x1 pra defesa
                         residuoDef = 1
                         residuoAtk = 2
+                        return true
                     }
                 }else{
                     if menorDadoAtk > menorDadoDef{
                         //2x1 pra defesa
                         residuoDef = 1
                         residuoAtk = 2
+                        return true
                     }else{
                         //3x0 pra defesa
                         residuoAtk = 3
+                        return false
                     }
                 }
                 
@@ -661,6 +652,24 @@ func encontraFront(estado: UILabel)->[String]{
        
     }
     
+    func conquistouTerritorioPlayer(territorioConquistado: Estado){
+        territorioConquistado.estadoLabel.textColor = UIColor.brown
+        territorioConquistado.estadoLabel.text = "1"
+        
+        computerEstados.append(territorioConquistado)
+        
+        var indice = 0
+        for estado in playerEstados{
+            if(territorioConquistado.nome == estado.nome){
+                break
+            }
+            indice = indice + 1
+        }
+        
+        playerEstados.remove(at: indice)
+        
+    }
+    
     @IBAction func atacar(_ sender: Any) {
         if playerTurn == true{
             if estadoSelecionado != nil{
@@ -683,7 +692,7 @@ func encontraFront(estado: UILabel)->[String]{
                                     if (self.estadoSelecionado?.estadoLabel.text == "1" || (self.estadoSelecionado?.estadoLabel.text == "2" && self.residuoDef == 2)||(self.estadoSelecionado?.estadoLabel.text == "3" && self.residuoDef == 3)){
                                     self.conquistouTerritorioInimigo(territorioConquistado: self.estadoSelecionado!)
                                 
-                                        estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoDef)
+                                        estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
                                 
                                     
                                     self.updatePlacar()
@@ -691,8 +700,22 @@ func encontraFront(estado: UILabel)->[String]{
                                     
                                         if self.playerTerritorios.text == "26" {
                                             self.turnLabel.text = "você conquistou o BRASIL!"
+                                        
+                                            let closure={(action:UIAlertAction!) -> Void in
+                                                if self.turnLabel.text == "você conquistou o BRASIL!"{
+                                                    self.dismiss(animated: true, completion: nil)
+                                                }
+                                                else {}
+                                            }
+                                            
+                                            let alerta2 = UIAlertController(title: "Atenção", message: "Você conquistou o BRASIL!", preferredStyle: .actionSheet)
+                                            alerta2.addAction(UIAlertAction(title: NSLocalizedString("GG", comment: ""), style: .default, handler: closure))
+                                            self.present(alerta2, animated: true, completion: nil)
+                                            
+                                        
                                         }
-                                    
+                                        
+                                       
                                     }//aqui ganhou a batalha porem n conquistou territorio
                                     estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
                                     self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!-self.residuoDef)
@@ -1089,6 +1112,192 @@ func encontraFront(estado: UILabel)->[String]{
         self.updateLabelsColors(arrayEstados: computerEstados, player: false)
     }
     
- 
+    @IBOutlet weak var passarTurno: UIButton!
+    @IBAction func passaTurno(_ sender: Any) {
+        
+        self.maquinaPosiciona()
+
+        self.maquinaAtaca()
+        
+        var mensagem = "A MAQUINA terminou de jogar, é sua vez!"
+        
+        self.updatePlacar()
+        if self.playerTerritorios.text == "0" {
+            self.turnLabel.text = "você perdeu!"
+            mensagem = "Você PERDEU!"
+            self.turnLabel.textColor = UIColor.red
+        }
+        else{ //jogo continua
+            self.updateBonusContinente()
+            self.updateTropasDisponiveis()
+        }
+        
+        let closure={(action:UIAlertAction!) -> Void in
+            if self.turnLabel.text == "você perdeu!"{
+                self.dismiss(animated: true, completion: nil)
+            }
+            else {}
+        }
+        
+        let alerta2 = UIAlertController(title: "Atenção", message: mensagem, preferredStyle: .actionSheet)
+        alerta2.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: closure))
+        self.present(alerta2, animated: true, completion: nil)
+    }
+
+
+    
+func maquinaPosiciona(){
+    var tropasDisponiveisNoTurnoMaquina: Int = 0
+    self.calculaBonusContinentMaquina()
+    tropasDisponiveisNoTurnoMaquina = self.computerEstados.count + self.maquinaBonus
+    
+    while (tropasDisponiveisNoTurnoMaquina > 0){
+        
+        let computerEstadosOrdenados = self.computerEstados.sorted { Int($0.estadoLabel.text!)! < Int($1.estadoLabel.text!)! }
+        let estadoMenosPovoado = computerEstadosOrdenados.first
+        
+        
+        estadoMenosPovoado?.estadoLabel.text = String(describing:(Int((estadoMenosPovoado?.estadoLabel.text)!)! + 1))
+        tropasDisponiveisNoTurnoMaquina = tropasDisponiveisNoTurnoMaquina - 1
+    }
+    
+}
+
+func calculaBonusContinentMaquina(){
+    
+    let bonusNorte = 3
+    let bonusCentroOeste = 1
+    let bonusSudeste = 2
+    let bonusSul = 1
+    let bonusNordeste = 4
+    
+    var totalBonus = 0
+    
+    if (acre.textColor == UIColor.brown && amazonas.textColor == UIColor.brown && roraima.textColor == UIColor.brown && rondonia.textColor == UIColor.brown && amapa.textColor == UIColor.brown && para.textColor == UIColor.brown && tocantins.textColor == UIColor.brown){
+        totalBonus = totalBonus + bonusNorte
+    }
+    if (matoGrosso.textColor == UIColor.brown && goias.textColor == UIColor.brown && matoGrossoDoSul.textColor == UIColor.brown){
+        totalBonus = totalBonus + bonusCentroOeste
+    }
+    
+    if (parana.textColor == UIColor.brown && rioGrandeDoSul.textColor == UIColor.brown && santaCatarina.textColor == UIColor.brown){
+        totalBonus = totalBonus + bonusSul
+    }
+    
+    if(saoPaulo.textColor == UIColor.brown && rioDeJaneiro.textColor == UIColor.brown && minasGerais.textColor == UIColor.brown && espiritoSanto.textColor == UIColor.brown){
+        totalBonus = totalBonus + bonusSudeste
+    }
+    
+    if(rioGrandeDoNorte.textColor == UIColor.brown && pernambuco.textColor == UIColor.brown && paraiba.textColor == UIColor.brown && alagoas.textColor == UIColor.brown && ceara.textColor == UIColor.brown && bahia.textColor == UIColor.brown && maranhao.textColor == UIColor.brown && piaui.textColor == UIColor.brown && sergipe.textColor == UIColor.brown){
+        
+        totalBonus = totalBonus + bonusNordeste
+    }
+    
+    self.maquinaBonus = totalBonus
+    }
+
+    func maquinaAtaca(){
+        var maquinaTaBraba = 0 //quando esta braba = 2, tem 50% de chance de atacar
+        var computerEstadosOrdenados = self.computerEstados.sorted{ Int($0.estadoLabel.text!)! < Int($1.estadoLabel.text!)! }
+   /*     let playerEstadosOrdenados = self.playerEstados.sorted{ Int($0.estadoLabel.text!)! < Int($1.estadoLabel.text!)! }*/
+        if(computerEstados.count <= playerEstados.count){maquinaTaBraba = 1
+            if(((computerEstados.count)-4) <= playerEstados.count){
+                maquinaTaBraba = 2
+            }
+        }else{
+            if computerEstados.count >= 20{
+                maquinaTaBraba = 2
+            }
+        }
+        var totalAtks = computerEstados.count + (maquinaTaBraba*3) //numero de ataques escala de acordo com brabeza
+        while totalAtks > 0 {
+            var triggerAtk =  Int(arc4random_uniform(4)) //0 a 5 , 20% de chance de atacar
+            triggerAtk = triggerAtk - maquinaTaBraba //podendo subir até 50% de chance
+            if triggerAtk < 0{
+                triggerAtk = 0
+            }
+            
+            if triggerAtk == 0{
+                print(totalAtks)
+                print("atacou!")
+                
+                let fonte = computerEstadosOrdenados.last //obs: sempre tera um no minimo
+                print("a fonte eh:")
+                print(fonte!.nome)
+                if let alvo = escolherAlvo(possiveisAlvos: fronteiraToEstado(fronteiras: (fonte?.fronteiras)!)){
+                    
+                    print("o alvo eh:")
+                    print(alvo.nome)
+                  
+                    self.ganhouBatalha = batalhar(estadoAtacante: (fonte?.estadoLabel)! , estadoDefensor: alvo.estadoLabel)
+                    print("ganhou batalha?")
+                    print(self.ganhouBatalha)
+                    if self.ganhouBatalha == true{
+                        
+                        if (alvo.estadoLabel.text == "1" || (alvo.estadoLabel.text == "2" && self.residuoDef == 2)||(alvo.estadoLabel.text == "3" && self.residuoDef == 3)){
+                            self.conquistouTerritorioPlayer(territorioConquistado: alvo)
+                            
+                            fonte?.estadoLabel.text = String(describing: Int((fonte?.estadoLabel.text!)!)! - self.residuoDef)
+                            
+                            self.updatePlacar()
+                            self.updateBonusContinente()
+                            
+                            if self.computerTerritorios.text == "26" {
+                                self.turnLabel.text = "você perdeu!"
+                            }
+                            
+                        }//aqui ganhou a batalha porem n conquistou territorio
+                        fonte?.estadoLabel.text = String(describing: Int((fonte?.estadoLabel.text!)!)! - self.residuoAtk)
+                        alvo.estadoLabel.text = String(describing: Int((alvo.estadoLabel.text)!)!-self.residuoDef)
+                        
+                    }else{ //TODO tratar quando perde a batalha
+                        fonte?.estadoLabel.text = String(describing: Int((fonte?.estadoLabel.text!)!)! - self.residuoAtk)
+                        alvo.estadoLabel.text = String(describing: Int((alvo.estadoLabel.text)!)!-self.residuoDef)
+                    }
+                    
+                    
+                    
+                }else{
+                    print("caiu no else mais triste de todos, ou seja, removeu o last:")
+                    //falhou em encontrar um territorio fonte com alvos validos
+                    print(computerEstadosOrdenados.last?.nome)
+                    if computerEstadosOrdenados.count > 1{
+                        computerEstadosOrdenados.removeLast()
+                    }
+                    //computerEstadosOrdenados.sorted
+                    print(computerEstadosOrdenados)
+                    totalAtks = totalAtks + 1
+                }
+  
+                
+            }
+            totalAtks = totalAtks - 1
+        }
+        
+    }
+    
+    func escolherAlvo(possiveisAlvos: [Estado])->Estado?{
+        var alvosValidos: [Estado] = []
+        var alvoEscolhido: Estado? = nil
+        for alvo in possiveisAlvos{
+            if (alvo.estadoLabel.textColor == UIColor.green){
+                alvosValidos.append(alvo)
+            }
+        }
+        alvosValidos = alvosValidos.sorted { Int($0.estadoLabel.text!)! < Int($1.estadoLabel.text!)! }
+        alvoEscolhido = alvosValidos.first
+        return alvoEscolhido
+    }
+    
+    func fronteiraToEstado(fronteiras: [String])->[Estado]{
+        var arrayEstados: [Estado] = []
+        for fronteira in fronteiras{
+            for estado in self.brasil{
+                if fronteira == estado.nome{
+                    arrayEstados.append(estado)}
+            }
+        }
+        return arrayEstados
+    }
     
 }
