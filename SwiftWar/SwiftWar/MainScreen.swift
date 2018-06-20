@@ -285,7 +285,6 @@ class MainScreen: UIViewController {
     
     }
     
-// todo fazer func para transformar as variaveis <estado>Front em array de string
 func encontraFront(estado: UILabel)->[String]{
     
     switch estado {
@@ -720,7 +719,7 @@ func encontraFront(estado: UILabel)->[String]{
                                     estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
                                     self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!-self.residuoDef)
                                     
-                                }else{ //TODO tratar quando perde a batalha
+                                }else{
                                     estadoSelecionadoFrontLabel[index].text = String(describing: Int(estadoSelecionadoFrontLabel[index].text!)! - self.residuoAtk)
                                     self.estadoSelecionado?.estadoLabel.text = String(describing: Int((self.estadoSelecionado?.estadoLabel.text)!)!-self.residuoDef)
                                 }
@@ -1089,7 +1088,6 @@ func encontraFront(estado: UILabel)->[String]{
             if computerEstados.count > playerEstados.count {
                 while computerEstados.count != playerEstados.count {
                     let limiteSuperior = computerEstados.count
-                    print(limiteSuperior)
                     let r = Int(arc4random_uniform(UInt32(limiteSuperior)))
                     //numero random entre 1 e o tamanho do array de computerEstados
         
@@ -1218,20 +1216,13 @@ func calculaBonusContinentMaquina(){
             }
             
             if triggerAtk == 0{
-                print(totalAtks)
-                print("atacou!")
                 
                 let fonte = computerEstadosOrdenados.last //obs: sempre tera um no minimo
-                print("a fonte eh:")
-                print(fonte!.nome)
+
                 if let alvo = escolherAlvo(possiveisAlvos: fronteiraToEstado(fronteiras: (fonte?.fronteiras)!)){
-                    
-                    print("o alvo eh:")
-                    print(alvo.nome)
                   
                     self.ganhouBatalha = batalhar(estadoAtacante: (fonte?.estadoLabel)! , estadoDefensor: alvo.estadoLabel)
-                    print("ganhou batalha?")
-                    print(self.ganhouBatalha)
+
                     if self.ganhouBatalha == true{
                         
                         if (alvo.estadoLabel.text == "1" || (alvo.estadoLabel.text == "2" && self.residuoDef == 2)||(alvo.estadoLabel.text == "3" && self.residuoDef == 3)){
@@ -1250,7 +1241,7 @@ func calculaBonusContinentMaquina(){
                         fonte?.estadoLabel.text = String(describing: Int((fonte?.estadoLabel.text!)!)! - self.residuoAtk)
                         alvo.estadoLabel.text = String(describing: Int((alvo.estadoLabel.text)!)!-self.residuoDef)
                         
-                    }else{ //TODO tratar quando perde a batalha
+                    }else{
                         fonte?.estadoLabel.text = String(describing: Int((fonte?.estadoLabel.text!)!)! - self.residuoAtk)
                         alvo.estadoLabel.text = String(describing: Int((alvo.estadoLabel.text)!)!-self.residuoDef)
                     }
@@ -1258,14 +1249,12 @@ func calculaBonusContinentMaquina(){
                     
                     
                 }else{
-                    print("caiu no else mais triste de todos, ou seja, removeu o last:")
                     //falhou em encontrar um territorio fonte com alvos validos
-                    print(computerEstadosOrdenados.last?.nome)
+               
                     if computerEstadosOrdenados.count > 1{
                         computerEstadosOrdenados.removeLast()
                     }
-                    //computerEstadosOrdenados.sorted
-                    print(computerEstadosOrdenados)
+                 
                     totalAtks = totalAtks + 1
                 }
   
