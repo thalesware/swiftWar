@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F60B0E8E20D5C3F500787D03 /* Fronteiras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B0E8D20D5C3F500787D03 /* Fronteiras.swift */; };
+		F60B0E9020D5F39B00787D03 /* RolarDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B0E8F20D5F39B00787D03 /* RolarDados.swift */; };
 		F63F890220ACCF8100F2DE74 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63F890120ACCF8100F2DE74 /* MainScreen.swift */; };
 		F6762D6920D59BAA00885863 /* Estado.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6762D6820D59BAA00885863 /* Estado.swift */; };
 		F6BCE89920AB6E8B0081C7C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BCE89820AB6E8B0081C7C7 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		F60B0E8D20D5C3F500787D03 /* Fronteiras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fronteiras.swift; sourceTree = "<group>"; };
+		F60B0E8F20D5F39B00787D03 /* RolarDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolarDados.swift; sourceTree = "<group>"; };
 		F63F890120ACCF8100F2DE74 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		F6762D6820D59BAA00885863 /* Estado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estado.swift; sourceTree = "<group>"; };
 		F6BCE89520AB6E8B0081C7C7 /* SwiftWar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftWar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 				F6BCE89820AB6E8B0081C7C7 /* AppDelegate.swift */,
 				F6BCE89A20AB6E8B0081C7C7 /* ViewController.swift */,
 				F6BCE89C20AB6E8B0081C7C7 /* Main.storyboard */,
+				F60B0E8F20D5F39B00787D03 /* RolarDados.swift */,
 				F63F890120ACCF8100F2DE74 /* MainScreen.swift */,
 				F6762D6820D59BAA00885863 /* Estado.swift */,
 				F60B0E8D20D5C3F500787D03 /* Fronteiras.swift */,
@@ -146,6 +149,7 @@
 			files = (
 				F63F890220ACCF8100F2DE74 /* MainScreen.swift in Sources */,
 				F60B0E8E20D5C3F500787D03 /* Fronteiras.swift in Sources */,
+				F60B0E9020D5F39B00787D03 /* RolarDados.swift in Sources */,
 				F6BCE89B20AB6E8B0081C7C7 /* ViewController.swift in Sources */,
 				F6BCE89920AB6E8B0081C7C7 /* AppDelegate.swift in Sources */,
 				F6762D6920D59BAA00885863 /* Estado.swift in Sources */,
